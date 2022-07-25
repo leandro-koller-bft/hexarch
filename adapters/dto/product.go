@@ -1,0 +1,27 @@
+package dto
+
+import "github.com/leandro-koller-bft/hexarch/app"
+
+type Product struct {
+	ID     string  `json:"id"`
+	Name   string  `json:"name"`
+	Prince float64 `json:"price"`
+	Status string  `json:"status"`
+}
+
+func (p *Product) Bind(product *app.Product) (*app.Product, error) {
+	if p.ID != "" {
+		product.ID = p.ID
+	}
+
+	product.Name = p.Name
+	product.Price = p.Prince
+	product.Status = p.Status
+	_, err := product.IsValid()
+
+	if err != nil {
+		return nil, err
+	}
+
+	return product, nil
+}
