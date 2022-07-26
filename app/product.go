@@ -58,7 +58,6 @@ type Product struct {
 }
 
 func NewProduct() *Product {
-
 	product := Product{
 		ID:     uuid.NewV4().String(),
 		Status: DISABLED,
